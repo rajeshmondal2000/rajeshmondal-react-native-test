@@ -8,6 +8,7 @@ import { Button, Image, Input } from "native-base";
 export interface ImageI {
   uri: string;
   name: string;
+  changed: boolean;
 }
 
 const AddProduct = () => {
@@ -21,7 +22,7 @@ const AddProduct = () => {
       addProduct({ ...data, imageBlob: imageUri }).then((response) => {
         ToastAndroid.show(response.message, ToastAndroid.SHORT);
         reset();
-        setImageUri(null)
+        setImageUri(null);
         setIsUploading(false);
       });
     } else {
@@ -35,14 +36,21 @@ const AddProduct = () => {
       type: "image/*",
     }).then((response) => {
       if (response.type == "success") {
-        setImageUri({ name: response.name, uri: response.uri });
+        setImageUri({ name: response.name, uri: response.uri, changed: false });
       }
     });
   };
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 20, fontWeight: "bold", textAlign: "center" }}>
+      <Text
+        style={{
+          fontSize: 20,
+          fontWeight: "bold",
+          textAlign: "center",
+          marginTop: 12,
+        }}
+      >
         Add Product
       </Text>
       <View style={styles.formContainer}>

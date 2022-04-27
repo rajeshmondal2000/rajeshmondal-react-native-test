@@ -23,7 +23,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./App/assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.rajeshmondal.rajeshmondal"
     },
     "web": {
       "favicon": "./App/assets/favicon.png"
